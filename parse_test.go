@@ -3,7 +3,6 @@ package semver
 import (
 	"testing"
 
-	"golang.org/x/mod/semver"
 	"gotest.tools/assert"
 )
 
@@ -106,19 +105,9 @@ func assertVersion(t *testing.T, input string, expect Version, expectErr string)
 
 func BenchmarkParse(b *testing.B) {
 	input := "v1.22.333-rc_alpha1a1a1a"
-
 	for b.Loop() {
 		version, err := Parse(input)
 		_ = version
 		_ = err
-	}
-}
-
-func BenchmarkSemverX(b *testing.B) {
-	input := "v1.22.333-rc_alpha1a1a1a"
-
-	for b.Loop() {
-		version := semver.Major(input)
-		_ = version
 	}
 }
